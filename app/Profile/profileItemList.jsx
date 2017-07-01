@@ -123,7 +123,7 @@ class ProfileItemList extends React.Component {
           </ul>
           <strong>Borrows:</strong>
           <ul style={{'listStylePosition': 'inside','paddingLeft':0}}>
-          {this.state.transactions && this.state.transactions..sort((a,b) => {
+          {this.state.transactions && this.state.transactions.sort((a,b) => {
             return new Date(a.createdAt) - new Date(b.createdAt);
             }).map(item => {
               if(item.borrower_id === this.props.userId){
