@@ -123,19 +123,21 @@ class ProfileItemList extends React.Component {
           </ul>
           <strong>Borrows:</strong>
           <ul style={{'listStylePosition': 'inside','paddingLeft':0}}>
-          {this.state.transactions && this.state.transactions.map(item => {
-            if(item.borrower_id === this.props.userId){
-              return (<Transactions
-                owner={item.owner.fullName}
-                borrower={item.borrower.fullName}
-                price={item.item.price}
-                datetime={item.createdAt}
-                title={item.item.title}
-                bool={false}
+          {this.state.transactions && this.state.transactions..sort((a,b) => {
+            return new Date(a.createdAt) - new Date(b.createdAt);
+            }).map(item => {
+              if(item.borrower_id === this.props.userId){
+                return (<Transactions
+                  owner={item.owner.fullName}
+                  borrower={item.borrower.fullName}
+                  price={item.item.price}
+                  datetime={item.createdAt}
+                  title={item.item.title}
+                  bool={false}
                 // populateProfile={this.props.populateProfile}
-              />)
-            }
-          })}
+                />)
+              }
+            })}
           </ul>
           <button onClick={this.changeRoute} className="btn btn-warning btn-md">More Details</button>
         </TabPanel>
